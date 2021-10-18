@@ -1,4 +1,4 @@
-package com.cricket.example;
+package com.cricket;
 
 import java.sql.*;
 

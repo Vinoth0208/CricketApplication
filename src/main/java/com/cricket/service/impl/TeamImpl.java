@@ -1,17 +1,18 @@
-package com.cricket.example.service.impl;
+package com.cricket.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.cricket.example.model.Player;
-import com.cricket.example.model.Team;
-import com.cricket.example.repository.TeamRepo;
-import com.cricket.example.service.teamService;
-
-public class TeamImpl implements teamService   {
+import com.cricket.model.Player;
+import com.cricket.model.Team;
+import com.cricket.repository.TeamRepo;
+import com.cricket.service.TeamService;
+@Service  
+public class TeamImpl implements TeamService   {
 
 	@Autowired
 	TeamRepo teamRepo;
@@ -22,8 +23,8 @@ public class TeamImpl implements teamService   {
 	}
 
 	@Override
-	public void deleteTeam(int teamId) {
-		teamRepo.deleteById(teamId);
+	public void deleteTeam(int id) {
+		teamRepo.deleteById(id);
 		
 	}
 
@@ -35,13 +36,16 @@ public class TeamImpl implements teamService   {
 	}
 
 	@Override
-	public Team getTeamById(int teamId) {
+	public Team getTeamById(int id) {
 		
-		return teamRepo.getById(teamId);
+		return teamRepo.getById(id);
 	}
 
 	@Override
 	public void updateTeamById(Team team) {
+		Team teamFromDb=teamRepo.findById(team.getId()).get();
+		teamFromDb.setCaptain(team.getCaptain());
+		teamFromDb.setName(team.getName());
 		teamRepo.save(team);
 		
 	}
