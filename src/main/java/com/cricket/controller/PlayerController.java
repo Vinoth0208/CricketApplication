@@ -1,18 +1,12 @@
 package com.cricket.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.cricket.client.PlayerClient;
 import com.cricket.model.Player;
 import com.cricket.service.impl.PlayerImpl;
-import com.cricket.service.impl.TeamImpl;
 
 
 @RestController
@@ -42,7 +36,7 @@ public class PlayerController implements PlayerClient  {
 	}
 
 	   
-	public void updatePlayerById(Player player) {
+	public void updatePlayer(Player player) {
 		playerImpl.updatePlayerById(player); 
 		
 	}

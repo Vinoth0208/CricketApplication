@@ -20,8 +20,7 @@ public class TeamController implements TeamClient {
 		}
 		
 		public void deleteTeam(int id) {
-				teamImpl.deleteTeam(id);
-			
+			teamImpl.deleteTeam(id);
 		}
 
 		public List<Team> getTeams() {
@@ -32,7 +31,7 @@ public class TeamController implements TeamClient {
 			return teamImpl.getTeamById(id);
 		}
 
-		public void updateTeamById(Team team) {
+		public void updateTeam(Team team) {
 			teamImpl.updateTeamById(team); 
 			
 		}
