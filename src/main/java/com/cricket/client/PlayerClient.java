@@ -32,7 +32,7 @@ public interface PlayerClient {
 	@GetMapping("/get/{id}")
 	public Player getPlayerById(@PathVariable("id")int id);
 
-	@PostMapping("/update")   
+	@PutMapping("/update")
 	public void updatePlayer(@RequestBody Player player);
 
 }
