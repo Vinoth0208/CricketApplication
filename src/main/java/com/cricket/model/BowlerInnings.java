@@ -32,8 +32,23 @@ public class BowlerInnings {
     private double economy = 0.0;
 
     @ManyToOne
-    @JoinColumn(name = "INNINGS_ID", referencedColumnName = "INNINGS_ID", nullable = false)
+    @JoinColumn(name = "INNINGS_ID", referencedColumnName = "INNINGS_ID")
     private Innings bowlerInnings;
+
+    @Column(name = "team_id", nullable = false)
+    private int teamId;
+
+    public int getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(int teamId) {
+        this.teamId = teamId;
+    }
+
+    public BowlerInnings() {
+
+    }
 
     public Long getId() {
         return id;
@@ -105,5 +120,11 @@ public class BowlerInnings {
 
     public void setEconomy(double economy) {
         this.economy = economy;
+    }
+
+    public BowlerInnings(String name, int teamId, int bowlerId) {
+        this.name = name;
+        this.teamId = teamId;
+        this.bowlerId = bowlerId;
     }
 }

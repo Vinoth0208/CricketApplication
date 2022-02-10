@@ -5,9 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import com.cricket.model.Player;
 import com.cricket.model.Team;
 import com.cricket.repository.TeamRepo;
 import com.cricket.service.TeamService;
@@ -18,8 +16,9 @@ public class TeamImpl implements TeamService   {
 	TeamRepo teamRepo;
 	
 	@Override
-	public void addTeam(Team team) {
-		teamRepo.save(team);	
+	public int createTeam(Team team) {
+		team = teamRepo.save(team);
+		return team.getId();
 	}
 
 	@Override
@@ -30,24 +29,20 @@ public class TeamImpl implements TeamService   {
 
 	@Override
 	public List<Team> getTeams() {
-		List<Team> team=new ArrayList<>();
-		teamRepo.findAll().forEach(teams->team.add(teams) );
-		return team;
+		return new ArrayList<>(teamRepo.findAll());
 	}
 
 	@Override
 	public Team getTeamById(int id) {
-		
 		return teamRepo.getById(id);
 	}
 
 	@Override
 	public void updateTeamById(Team team) {
-		Team teamFromDb=teamRepo.findById(team.getId()).get();
+		Team teamFromDb = teamRepo.findById(team.getId()).get();
 		teamFromDb.setCaptain(team.getCaptain());
 		teamFromDb.setName(team.getName());
 		teamRepo.save(team);
-		
 	}
 
 }

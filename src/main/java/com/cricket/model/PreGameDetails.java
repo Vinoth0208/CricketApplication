@@ -2,21 +2,41 @@ package com.cricket.model;
 
 public class PreGameDetails {
     String battingTeamName;
-    String chasingTeamName;
+    String bowlingTeamName;
     int totalOvers = 0;
     int playerPerTeam = 0;
     String striker;
+    int strikerId;
     String nonStriker;
+    int nonStrikerId;
     String bowler;
 
+    public PreGameDetails() {super();}
+
     public PreGameDetails(PreGameDetails preGameDetails) {
-        this.battingTeamName = preGameDetails.battingTeamName;
-        this.chasingTeamName = preGameDetails.chasingTeamName;
+        super();
         this.totalOvers = preGameDetails.totalOvers;
         this.playerPerTeam = preGameDetails.playerPerTeam;
         this.striker = preGameDetails.striker;
+        this.strikerId = preGameDetails.strikerId;
         this.nonStriker = preGameDetails.nonStriker;
+        this.nonStrikerId = preGameDetails.nonStrikerId;
         this.bowler = preGameDetails.bowler;
+        this.battingTeamName = preGameDetails.battingTeamName;
+        this.bowlingTeamName = preGameDetails.bowlingTeamName;
+    }
+
+    public PreGameDetails(String battingTeamName, String bowlingTeamName, int totalOvers, int playerPerTeam, String striker, int strikerId, String nonStriker, int nonStrikerId, String bowler) {
+        super();
+        this.battingTeamName = battingTeamName;
+        this.bowlingTeamName = bowlingTeamName;
+        this.totalOvers = totalOvers;
+        this.playerPerTeam = playerPerTeam;
+        this.striker = striker;
+        this.strikerId = strikerId;
+        this.nonStriker = nonStriker;
+        this.nonStrikerId = nonStrikerId;
+        this.bowler = bowler;
     }
 
     public String getBattingTeamName() {
@@ -27,12 +47,12 @@ public class PreGameDetails {
         this.battingTeamName = battingTeamName;
     }
 
-    public String getChasingTeamName() {
-        return chasingTeamName;
+    public String getBowlingTeamName() {
+        return bowlingTeamName;
     }
 
-    public void setChasingTeamName(String chasingTeamName) {
-        this.chasingTeamName = chasingTeamName;
+    public void setBowlingTeamName(String bowlingTeamName) {
+        this.bowlingTeamName = bowlingTeamName;
     }
 
     public int getTotalOvers() {
@@ -73,5 +93,21 @@ public class PreGameDetails {
 
     public void setBowler(String bowler) {
         this.bowler = bowler;
+    }
+
+    public int getStrikerId() {
+        return strikerId;
+    }
+
+    public void setStrikerId(int strikerId) {
+        this.strikerId = strikerId;
+    }
+
+    public int getNonStrikerId() {
+        return nonStrikerId;
+    }
+
+    public void setNonStrikerId(int nonStrikerId) {
+        this.nonStrikerId = nonStrikerId;
     }
 }

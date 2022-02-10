@@ -2,14 +2,12 @@ package com.cricket.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.cricket.model.Team;
 
 
 public interface TeamService {
 
-	public void addTeam(Team team);
+	public int createTeam(Team team);
 	
 	public void deleteTeam(int id);
 	

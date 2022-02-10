@@ -23,6 +23,27 @@ public class Game {
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
     private List<Innings> innings = new ArrayList<>();
 
+    @Column(name = "overs_per_innings", nullable = false)
+    private int oversPerInnings;
+
+    @Column(name = "players_per_team", nullable = false)
+    private int playersPerTeam;
+
+    public int getPlayersPerTeam() {
+        return playersPerTeam;
+    }
+
+    public void setPlayersPerTeam(int playersPerTeam) {
+        this.playersPerTeam = playersPerTeam;
+    }
+
+    public int getOversPerInnings() {
+        return oversPerInnings;
+    }
+
+    public void setOversPerInnings(int oversPerInnings) {
+        this.oversPerInnings = oversPerInnings;
+    }
 
     public List<Innings> getInnings() {
         return innings;

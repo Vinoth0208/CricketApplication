@@ -15,7 +15,7 @@ public class GameController implements GameClient {
 
     @Override
     public Game startGame(PreGameDetails preGameDetails) {
-        return null;
+        return gameService.createGame(preGameDetails);
     }
 
     @Override
