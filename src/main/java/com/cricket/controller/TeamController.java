@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cricket.client.PlayerClient;
 import com.cricket.client.TeamClient;
 import com.cricket.model.Team;
 import com.cricket.service.impl.TeamImpl;
@@ -16,7 +15,7 @@ public class TeamController implements TeamClient {
 	TeamImpl teamImpl;
 	//Teams
 		public void addTeam(Team team) {
-			teamImpl.addTeam(team);
+			teamImpl.createTeam(team);
 		}
 		
 		public void deleteTeam(int id) {

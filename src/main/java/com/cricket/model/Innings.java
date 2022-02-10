@@ -26,20 +26,8 @@ public class Innings {
     @OneToMany(mappedBy = "bowlerInnings", cascade = CascadeType.ALL)
     private List<BowlerInnings> bowlerInnings;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "striker")
-    private BatsmanInnings striker;
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "nonStriker")
-    private BatsmanInnings nonStriker;
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "currentBowler")
-    private BowlerInnings currentBowler;
-
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "game_id", nullable = false)
+    @JoinColumn(name = "game_id")
     private Game game;
 
     public Game getGame() {
@@ -58,10 +46,9 @@ public class Innings {
         this.currentInnings = currentInnings;
     }
 
-    public Innings(String strikerName, String nonStrikerName, String currentBowlerName) {
-        this.striker.setName(strikerName);
-        this.nonStriker.setName(nonStrikerName);
-        this.currentBowler.setName(currentBowlerName);
+    public Innings(CurrentInnings currentInnings, Status inningsStatus) {
+        this.currentInnings = currentInnings;
+        this.inningsStatus = inningsStatus;
     }
 
     public Innings() {
@@ -98,30 +85,6 @@ public class Innings {
 
     public void setBowlerInnings(List<BowlerInnings> bowlerInnings) {
         this.bowlerInnings = bowlerInnings;
-    }
-
-    public BatsmanInnings getStriker() {
-        return striker;
-    }
-
-    public void setStriker(BatsmanInnings striker) {
-        this.striker = striker;
-    }
-
-    public BatsmanInnings getNonStriker() {
-        return nonStriker;
-    }
-
-    public void setNonStriker(BatsmanInnings nonStriker) {
-        this.nonStriker = nonStriker;
-    }
-
-    public BowlerInnings getCurrentBowler() {
-        return currentBowler;
-    }
-
-    public void setCurrentBowler(BowlerInnings currentBowler) {
-        this.currentBowler = currentBowler;
     }
 
 }

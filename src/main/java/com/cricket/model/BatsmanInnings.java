@@ -34,15 +34,20 @@ public class BatsmanInnings {
     @Column(name = "STATE")
     private BattingState state;
 
+    @Column(name = "team_id", nullable = false)
+    private int teamId;
+
     @ManyToOne
-    @JoinColumn(name = "INNINGS_ID", referencedColumnName = "INNINGS_ID", nullable = false)
+    @JoinColumn(name = "INNINGS_ID", referencedColumnName = "INNINGS_ID")
     private Innings batsmanInnings;
-    
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "striker")
-    private Innings strikerMapped;
-    
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "nonStriker")
-    private Innings nonStrikerMapped;
+
+    public int getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(int teamId) {
+        this.teamId = teamId;
+    }
 
     public Innings getBatsmanInnings() {
         return batsmanInnings;
@@ -53,6 +58,11 @@ public class BatsmanInnings {
     }
 
     public BatsmanInnings() { }
+
+    public BatsmanInnings(String name, int teamId) {
+        this.name = name;
+        this.teamId = teamId;
+    }
 
     public Long getId() {
         return id;
@@ -125,22 +135,6 @@ public class BatsmanInnings {
 
     public void setState(BattingState state) {
         this.state = state;
-    }
-
-    public Innings getStrikerMapped() {
-        return strikerMapped;
-    }
-
-    public void setStrikerMapped(Innings strikerMapped) {
-        this.strikerMapped = strikerMapped;
-    }
-
-    public Innings getNonStrikerMapped() {
-        return nonStrikerMapped;
-    }
-
-    public void setNonStrikerMapped(Innings nonStrikerMapped) {
-        this.nonStrikerMapped = nonStrikerMapped;
     }
 
     public BatsmanInnings(BatterInningsBuilder batterInnings) {

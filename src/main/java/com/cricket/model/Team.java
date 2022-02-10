@@ -21,6 +21,10 @@ public class Team {
 		super();
 	}
 
+	public Team(String name) {
+		this.name = name;
+	}
+
 	public Team(int id, String name, String captain) {
 		super();
 		this.id = id;
